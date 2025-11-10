@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Wood
   - Helmet
+  - CutPoint
+  - Hand
+  - saw
   layers:
   - Default
   - TransparentFX
