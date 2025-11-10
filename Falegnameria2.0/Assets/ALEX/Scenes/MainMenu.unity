@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SALVA FRANCO
+  m_text: SALVA   FRANCO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95b6f6657e7bf8742a5088f07d9b322a, type: 2}
   m_sharedMaterial: {fileID: -5933078695804009662, guid: 95b6f6657e7bf8742a5088f07d9b322a, type: 2}
