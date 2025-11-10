@@ -5,21 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes_Filippo/SampleScene.unity
+  - enabled: 1
+    path: Assets/ScenesFrancesca/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes_Filippo/MiniGiocoLegna.unity
-    guid: 1de04bf132f933a4d8508850fd568a4f
+    path: Assets/ScenesFrancesca/MenuTutorial.unity
+    guid: d73e15fe48964ef4a8ae0e1584777031
   - enabled: 1
-    path: Assets/Scenes_Filippo/GameOver.unity
-    guid: e0bf8bb31d671d94f957c21af13e9f5f
-  - enabled: 1
-    path: Assets/Scenes_Filippo/Win.unity
-    guid: 4613a155c19f38a4285e01fc505bc04c
-  - enabled: 1
-    path: Assets/Scenes_Filippo/hubselection.unity
-    guid: fe7b0c595b3e64c4092f6a2a40752aed
+    path: Assets/ScenesFrancesca/MenuGioco.unity
+    guid: 6bb8a4e96221ede4f90d287b2342c65a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
