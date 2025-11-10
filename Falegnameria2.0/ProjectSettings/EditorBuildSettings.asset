@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/ScenesAlex/MainMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/ScenesFrancesca/MenuTutorial.unity
+    path: Assets/ScenesFrancesca/MenuTutorialLegno.unity
     guid: d73e15fe48964ef4a8ae0e1584777031
   - enabled: 1
-    path: Assets/ScenesFrancesca/MenuGioco.unity
+    path: Assets/ScenesFrancesca/MenuGiocoLegno.unity
     guid: 67797dd82ccc43b4daf07f8fc34dbda6
   - enabled: 1
     path: Assets/Scenes_Filippo/GameOver.unity
