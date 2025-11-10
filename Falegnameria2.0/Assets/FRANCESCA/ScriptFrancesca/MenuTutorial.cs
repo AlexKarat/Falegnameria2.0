@@ -9,4 +9,10 @@ public class MenuTutorialLegno : MonoBehaviour
         Debug.Log("Torno al menu del minigioco legno");
         SceneManager.LoadScene("MenuGiocoLegno");
     }
+
+    public void OnBackSega()
+    { 
+        Debug.Log("Torno al menu del tutorial sega");
+        SceneManager.LoadScene("MenuGiocoSega");
+    }
 }
