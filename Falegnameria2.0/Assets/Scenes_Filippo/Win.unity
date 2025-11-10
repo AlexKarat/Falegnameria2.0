@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneButtonsManager
   menuSceneName: MainMenu
-  hubSceneName: Hub
+  hubSceneName: hubselection
   miniGiocoSceneName: MiniGiocoLegna
 --- !u!1 &388903857
 GameObject:

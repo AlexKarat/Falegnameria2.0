@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 public class SceneButtonsManager : MonoBehaviour
 {
     [Header("Nomi delle Scene")]
-    public string menuSceneName = "MainMenu";   // scena del menù (puoi cambiarlo in seguito)
-    public string hubSceneName = "Hub";         // scena dell’hub (puoi cambiarlo in seguito)
-    public string miniGiocoSceneName = "MiniGiocoLegna"; // 👈 aggiunto per restart
+    public string menuSceneName = "MainMenu";          // Nome della scena del menù
+    public string hubSceneName = "hubselection";       // ✅ Nome della scena dell'hub
+    public string miniGiocoSceneName = "MiniGiocoLegna"; // Nome della scena del minigioco
 
     // Torna al menù principale
     public void GoToMenu()
@@ -33,7 +33,7 @@ public class SceneButtonsManager : MonoBehaviour
         Application.Quit();
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // così funziona anche in Play Mode
+        UnityEditor.EditorApplication.isPlaying = false; // Funziona anche in Play Mode
 #endif
     }
 }
