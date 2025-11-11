@@ -132,11 +132,19 @@ public class GameManager : MonoBehaviour
     // ----------------------------
     // FINE GIOCO
     // ----------------------------
+    // NUOVO METODO
     private void GameOver()
     {
         isGameOver = true;
         Time.timeScale = 0f;
         Debug.Log("GAME OVER!");
+
+        // --- MODIFICA AGGIUNTA ---
+        // Salva il nome di QUESTA scena (es. "MiniGiocoLegna")
+        // prima di caricare la scena di Game Over.
+        StatoGioco.ScenaDaRiavviare = SceneManager.GetActiveScene().name;
+        // --- FINE MODIFICA ---
+
         SceneManager.LoadScene("GameOver"); // metti il nome esatto della scena
     }
 

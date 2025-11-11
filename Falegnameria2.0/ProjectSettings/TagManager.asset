@@ -8,6 +8,7 @@ TagManager:
   - Helmet
   - CutPoint
   - Hand
+  - Saw
   - saw
   layers:
   - Default

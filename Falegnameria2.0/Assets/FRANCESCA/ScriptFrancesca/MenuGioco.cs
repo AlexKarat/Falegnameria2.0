@@ -33,6 +33,6 @@ public class MenuGiocoLegnoManager : MonoBehaviour
     public void OnStartSega()
     {
         Debug.Log("Avvio minigioco: MiniGiocoSega");
-        SceneManager.LoadScene("MiniGiocoSega");
+        SceneManager.LoadScene("MiniGiocoSegaCircolare");
     }
 }
