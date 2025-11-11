@@ -6,7 +6,7 @@ public class HubManager : MonoBehaviour
     [Header("Nomi delle Scene dei MENU dei minigiochi")]
     public string menuGuanti = "MenuGiocoGuanti";
     public string menuLegno = "MenuGiocoLegno";
-    public string menuSega = "MenuGiocoSegaCircolare"; // oppure "MenuGiocoSega" se la tua scena si chiama così
+    public string menuSega = "MenuGiocoSega"; // oppure "MenuGiocoSega" se la tua scena si chiama così
     public string menuOcchiali = "MenuGiocoOcchiali";
 
     // --- Metodi collegabili ai pulsanti ---
