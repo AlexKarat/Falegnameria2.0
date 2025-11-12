@@ -1,0 +1,13 @@
+using UnityEngine;
+
+public class HubMusicTrigger : MonoBehaviour
+{
+    public AudioClip hubMusic;
+
+    void Start()
+    {
+        AudioManager am = FindObjectOfType<AudioManager>();
+        if (am != null)
+            am.StartCoroutine(am.FadeInMusic(hubMusic, 2f));
+    }
+}
