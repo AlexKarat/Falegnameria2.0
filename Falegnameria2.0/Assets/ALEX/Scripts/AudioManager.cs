@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     private bool sfxOn = true;
 
     void Start()
+
     {
         UpdateMusicState();
         UpdateSFXState();
@@ -47,6 +48,7 @@ public class AudioManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
+        // Cambia solo il volume, senza toccare mute o altro
         sfxSource.volume = volume;
     }
 
@@ -72,7 +74,21 @@ public class AudioManager : MonoBehaviour
 
     private void UpdateSFXState()
     {
+        // Cambia solo il mute, senza toccare volume
         sfxSource.mute = !sfxOn;
         sfxButtonText.text = sfxOn ? "SFX Volume: ON" : "SFX Volume: OFF";
+    }
+
+    public void OnSFXSliderChanged()
+    {
+        // legge il valore dallo slider direttamente
+        if (sfxSlider != null)
+            SetSFXVolume(sfxSlider.value);
+    }
+
+    public void OnMusicSliderChanged()
+    {
+        if (musicSlider != null)
+            SetMusicVolume(musicSlider.value);
     }
 }
