@@ -1,64 +1,55 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-// [RequireComponent(typeof(BraccioController))] // ERRORE RIMOSSO
+[RequireComponent(typeof(BraccioController))]
 public class BraccioController : MonoBehaviour
 {
     [Header("Limiti orizzontali")]
     public float leftX = -4.5f;
     public float rightX = 4.5f;
 
-    [Header("Velocit�")]
+    [Header("Velocità")]
     public float speed = 3f;
 
     [HideInInspector]
     public bool isActiveTrunk = false; // impostato dal manager
 
     private bool movingRight = true;
-    private MiniGameSegaManager manager; // Variabile per salvare il manager
-
-    void Start()
-    {
-        // CORREZIONE: Cerca il manager UNA SOLA VOLTA all'inizio
-        manager = GameObject.FindObjectOfType<MiniGameSegaManager>();
-        if (manager == null)
-        {
-            Debug.LogError("BraccioController: MiniGameSegaManager non trovato!");
-        }
-    }
+    private bool isMoving = false; // 🔹 NUOVO: controlla se il tronco è in movimento o fermo
 
     void Update()
     {
-        // Protezione: non muovere se non � il tronco attivo
+        // se non è il tronco attivo → non fare nulla
         if (!isActiveTrunk) return;
 
-        // CORREZIONE: usa la variabile 'manager' salvata (molto pi� veloce)
-        if (manager == null)
+        // controlla stato del gioco
+        var manager = FindObjectOfType<MiniGameSegaManager>();
+        if (manager == null) return;
+        if (!manager.GameStarted || manager.IsPaused) return;
+
+        // 🔹 Controllo clic per attivare/disattivare il movimento
+        if (Input.GetMouseButtonDown(0))
         {
-            // Se non trovi manager, non eseguire movimento
-            return;
-        }
-        else
-        {
-            // Protezione dal manager: aspettare Start e non muovere in pausa
-            if (!manager.GameStarted) return;
-            if (manager.IsPaused) return;
+            isMoving = !isMoving; // inverte stato
         }
 
-        // Movimento solo mentre il tasto sinistro � premuto
-        if (!Input.GetMouseButton(0)) return;
+        // se non in movimento → stop
+        if (!isMoving) return;
 
+        // 🔹 Movimento automatico destra-sinistra
         float step = speed * Time.deltaTime;
         Vector3 pos = transform.position;
 
         if (movingRight)
         {
             pos.x += step;
-            if (pos.x >= rightX) movingRight = false;
+            if (pos.x >= rightX)
+                movingRight = false;
         }
         else
         {
             pos.x -= step;
-            if (pos.x <= leftX) movingRight = true;
+            if (pos.x <= leftX)
+                movingRight = true;
         }
 
         transform.position = pos;
