@@ -21,12 +21,12 @@ public class AudioManager : MonoBehaviour
     private bool musicOn = true;
     private bool sfxOn = true;
 
-    void Start() 
-
+    void Start()
     {
         UpdateMusicState();
         UpdateSFXState();
     }
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -96,6 +96,7 @@ public class AudioManager : MonoBehaviour
         if (musicSlider != null)
             SetMusicVolume(musicSlider.value);
     }
+
     public IEnumerator FadeOutMusic(float duration)
     {
         float startVolume = musicSource.volume;
@@ -133,8 +134,6 @@ public class AudioManager : MonoBehaviour
     private IEnumerator TransitionToHub()
     {
         yield return StartCoroutine(FadeOutMusic(2f)); // 2 secondi di fade
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Hub");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("hubselection");
     }
-
 }
-
