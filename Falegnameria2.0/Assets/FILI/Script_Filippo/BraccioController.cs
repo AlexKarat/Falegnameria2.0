@@ -1,22 +1,51 @@
 using UnityEngine;
 
+// [RequireComponent(typeof(BraccioController))] // ERRORE RIMOSSO
 public class BraccioController : MonoBehaviour
 {
     [Header("Limiti orizzontali")]
     public float leftX = -4.5f;
     public float rightX = 4.5f;
+
     [Header("Velocità")]
     public float speed = 3f;
 
+    [HideInInspector]
+    public bool isActiveTrunk = false; // impostato dal manager
+
     private bool movingRight = true;
-    private bool isMouseHeld = false;
+    private MiniGameSegaManager manager; // Variabile per salvare il manager
+
+    void Start()
+    {
+        // CORREZIONE: Cerca il manager UNA SOLA VOLTA all'inizio
+        manager = GameObject.FindObjectOfType<MiniGameSegaManager>();
+        if (manager == null)
+        {
+            Debug.LogError("BraccioController: MiniGameSegaManager non trovato!");
+        }
+    }
 
     void Update()
     {
-        // Se il progetto usa il New Input System + Both, Input.GetMouseButton va bene.
-        isMouseHeld = Input.GetMouseButton(0);
+        // Protezione: non muovere se non è il tronco attivo
+        if (!isActiveTrunk) return;
 
-        if (!isMouseHeld) return;
+        // CORREZIONE: usa la variabile 'manager' salvata (molto più veloce)
+        if (manager == null)
+        {
+            // Se non trovi manager, non eseguire movimento
+            return;
+        }
+        else
+        {
+            // Protezione dal manager: aspettare Start e non muovere in pausa
+            if (!manager.GameStarted) return;
+            if (manager.IsPaused) return;
+        }
+
+        // Movimento solo mentre il tasto sinistro è premuto
+        if (!Input.GetMouseButton(0)) return;
 
         float step = speed * Time.deltaTime;
         Vector3 pos = transform.position;

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
+        // Avvio le coroutine ma aspettano che il gioco inizi
         woodRoutine = StartCoroutine(WoodSpawner());
         helmetRoutine = StartCoroutine(HelmetSpawner());
     }
@@ -34,8 +35,14 @@ public class Spawner : MonoBehaviour
 
     IEnumerator WoodSpawner()
     {
+        // 🕒 Aspetta che il gioco inizi
+        yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.GameStarted);
+
         while (true)
         {
+            // ⏸️ Se il gioco è in pausa, aspetta finché non riprende
+            yield return new WaitWhile(() => GameManager.Instance.IsPaused);
+
             Spawn(woodPrefab);
             yield return new WaitForSeconds(woodSpawnInterval);
         }
@@ -43,8 +50,14 @@ public class Spawner : MonoBehaviour
 
     IEnumerator HelmetSpawner()
     {
+        // 🕒 Aspetta che il gioco inizi
+        yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.GameStarted);
+
         while (true)
         {
+            // ⏸️ Se il gioco è in pausa, aspetta finché non riprende
+            yield return new WaitWhile(() => GameManager.Instance.IsPaused);
+
             float wait = Random.Range(helmetSpawnIntervalMin, helmetSpawnIntervalMax);
             yield return new WaitForSeconds(wait);
             Spawn(helmetPrefab);

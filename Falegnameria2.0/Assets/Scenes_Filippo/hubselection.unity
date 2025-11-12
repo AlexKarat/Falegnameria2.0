@@ -928,8 +928,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1549002170}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: AvviaMinigiocoSega
+        m_TargetAssemblyTypeName: HubManager, Assembly-CSharp
+        m_MethodName: ApriMenuSega
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

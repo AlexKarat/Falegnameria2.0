@@ -19,17 +19,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Se il gioco è in pausa o finito, non permettere movimenti
-        if (GameManager.Instance == null || Time.timeScale == 0f)
-            return;
+        // Se il GameManager non esiste ancora oppure il gioco non è partito, non accettiamo input
+        if (GameManager.Instance == null) return;
+        if (!GameManager.Instance.GameStarted) return;
+        if (GameManager.Instance.IsPaused) return;
+        if (GameManager.Instance == null) return;
 
-        // Ottieni la posizione del mouse in coordinate mondo
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // Blocca il movimento solo sull'asse X (destra/sinistra)
-        float clampedX = Mathf.Clamp(mousePosition.x, -limitX, limitX);
-        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+        // --> qui inserisci la logica esistente per muovere il player col mouse
+        // esempio generico (sostituisci con il tuo codice di movimento):
+        Vector3 mousePos = Input.mousePosition;
+        // converti mousePos da schermo a world se usi world space:
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0f));
+        // muovi solo in X (esempio semplice):
+        transform.position = new Vector3(worldPos.x, transform.position.y, transform.position.z);
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
