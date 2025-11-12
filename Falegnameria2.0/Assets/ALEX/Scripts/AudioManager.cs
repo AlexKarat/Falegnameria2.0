@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,10 +21,15 @@ public class AudioManager : MonoBehaviour
     private bool musicOn = true;
     private bool sfxOn = true;
 
-    void Start()
+    void Start() 
+
     {
         UpdateMusicState();
         UpdateSFXState();
+    }
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 
     public void ToggleMusic()
@@ -47,6 +53,7 @@ public class AudioManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
+        // Cambia solo il volume, senza toccare mute o altro
         sfxSource.volume = volume;
     }
 
@@ -72,7 +79,62 @@ public class AudioManager : MonoBehaviour
 
     private void UpdateSFXState()
     {
+        // Cambia solo il mute, senza toccare volume
         sfxSource.mute = !sfxOn;
         sfxButtonText.text = sfxOn ? "SFX Volume: ON" : "SFX Volume: OFF";
     }
+
+    public void OnSFXSliderChanged()
+    {
+        // legge il valore dallo slider direttamente
+        if (sfxSlider != null)
+            SetSFXVolume(sfxSlider.value);
+    }
+
+    public void OnMusicSliderChanged()
+    {
+        if (musicSlider != null)
+            SetMusicVolume(musicSlider.value);
+    }
+    public IEnumerator FadeOutMusic(float duration)
+    {
+        float startVolume = musicSource.volume;
+
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= startVolume * Time.deltaTime / duration;
+            yield return null;
+        }
+
+        musicSource.Stop();
+        musicSource.volume = startVolume; // resetta volume per la prossima volta
+    }
+
+    public IEnumerator FadeInMusic(AudioClip newClip, float duration)
+    {
+        musicSource.clip = newClip;
+        musicSource.volume = 0;
+        musicSource.Play();
+
+        while (musicSource.volume < 1)
+        {
+            musicSource.volume += Time.deltaTime / duration;
+            yield return null;
+        }
+
+        musicSource.volume = 1;
+    }
+
+    public void OnStartButtonPressed()
+    {
+        StartCoroutine(TransitionToHub());
+    }
+
+    private IEnumerator TransitionToHub()
+    {
+        yield return StartCoroutine(FadeOutMusic(2f)); // 2 secondi di fade
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Hub");
+    }
+
 }
+
