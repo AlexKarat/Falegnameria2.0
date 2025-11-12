@@ -176,15 +176,27 @@ public class MiniGameSegaManager : MonoBehaviour
     void Win()
     {
         gameEnded = true;
-        Time.timeScale = 1f;
+
+        // --- MODIFICA AGGIUNTA ---
+        // Salva il nome di QUESTA scena (es. "MiniGiocoSegaCircolare")
+        // prima di caricare la scena di Vittoria.
+        StatoGioco.ScenaDaRiavviare = SceneManager.GetActiveScene().name;
+        // --- FINE MODIFICA ---
+
         SceneManager.LoadScene(winSceneName);
     }
 
+    // NUOVO METODO
     void GameOver()
     {
         gameEnded = true;
-        Time.timeScale = 1f;
-        // StatoGioco.ScenaDaRiavviare = SceneManager.GetActiveScene().name; // Ho lasciato questa riga com'era
+
+        // --- MODIFICA AGGIUNTA ---
+        // Salva il nome di QUESTA scena (es. "MiniGiocoSegaCircolare")
+        // prima di caricare la scena di Game Over.
+        StatoGioco.ScenaDaRiavviare = SceneManager.GetActiveScene().name;
+        // --- FINE MODIFICA ---
+
         SceneManager.LoadScene(gameOverSceneName);
     }
 

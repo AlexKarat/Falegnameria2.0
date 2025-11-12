@@ -1938,7 +1938,7 @@ MonoBehaviour:
   spawnXMin: -8
   spawnXMax: 8
   spawnY: 6
-  woodSpawnInterval: 1
+  woodSpawnInterval: 0.8
   helmetSpawnIntervalMin: 6
   helmetSpawnIntervalMax: 12
 --- !u!4 &1028739061
@@ -2317,7 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   maxLives: 3
-  timer: 60
+  timer: 30
   timerText: {fileID: 82585931}
   lifeIcons:
   - {fileID: 1367576188}

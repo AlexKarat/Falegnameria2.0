@@ -187,12 +187,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
+    // NUOVO METODO
     private void WinGame()
     {
         isGameOver = true;
         Time.timeScale = 0f;
         Debug.Log("WIN!");
 
-        SceneManager.LoadScene("Win");
+        // --- MODIFICA AGGIUNTA ---
+        // Salva il nome di QUESTA scena (es. "MiniGiocoLegna")
+        // prima di caricare la scena di Vittoria.
+        StatoGioco.ScenaDaRiavviare = SceneManager.GetActiveScene().name;
+        // --- FINE MODIFICA ---
+
+        SceneManager.LoadScene("Win"); // metti il nome esatto della scena
     }
 }
