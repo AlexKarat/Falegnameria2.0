@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c83b9f0da43b14ab3e9bf5772c1dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HubMusicTrigger
-  hubMusic: {fileID: 8300000, guid: 59ef556014cb0094aab21f9d9ede705b, type: 3}
+  hubMusic: {fileID: 8300000, guid: 4f661b5caa77b8f4998ce4da9a7984f1, type: 3}
 --- !u!4 &769636601
 Transform:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class HubMusicTrigger : MonoBehaviour
 
     void Start()
     {
-        AudioManager am = FindObjectOfType<AudioManager>();
+        AudioManager am = FindFirstObjectByType<AudioManager>();
         if (am != null)
             am.StartCoroutine(am.FadeInMusic(hubMusic, 2f));
     }
